@@ -94,7 +94,7 @@ public class TicTacToe {
         if(board[1][1] == playerMove && board[2][2] == playerMove && board[3][3] == playerMove || board[1][3] == playerMove && board[2][2] == playerMove && board[3][1] == playerMove )
         {
             System.out.println("You win");
-            return true;
+
         }
         return false;
     }
