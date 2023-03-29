@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class TicTacToe {
-    private static String playerMove = "X";
+    private static String playerMove;
     private static final int ROW = 3;
     private static final int COL = 3;
     private static String board[][] = new String[ROW][COL];
@@ -11,10 +11,12 @@ public class TicTacToe {
         int moveRowCoordinate = 0;
         int moveColCoordinate = 0;
         boolean validMove = false;
+        int moveCnt = 0;
         System.out.println("Tic Tac Toe Game");
     clearBoard();
     display();
     Scanner in = new Scanner(System.in);
+    playerMove = "X";
     moveRowCoordinate = SafeInput.getRangedInt(in,"Player 1, please enter the number of the row you would like to play on: ",1,3);
     moveColCoordinate = SafeInput.getRangedInt(in,"Player 1, please enter the number of the column you would like to play on: ",1,3);
 
@@ -40,7 +42,11 @@ public class TicTacToe {
                display();
            }
        }while (validMove == false);
+
    }
+        moveCnt++;
+
+   // second player
    playerMove = "O";
         moveRowCoordinate = SafeInput.getRangedInt(in,"Player 2, please enter the number of the row you would like to play on: ",1,3);
         moveColCoordinate = SafeInput.getRangedInt(in,"Player 2, please enter the number of the column you would like to play on: ",1,3);
@@ -69,7 +75,9 @@ public class TicTacToe {
                     display();
                 }
             }while (validMove == false);
+
         }
+        moveCnt++;
      }
 
     private static void clearBoard()
@@ -102,16 +110,44 @@ public class TicTacToe {
         }
         return retVal;
     }
-    private static boolean isDiagnalWin(String playerMove)
+    private static boolean isWin(String playerMove)
     {
-
-        if(board[1][1] == playerMove && board[2][2] == playerMove && board[3][3] == playerMove || board[1][3] == playerMove && board[2][2] == playerMove && board[3][1] == playerMove )
+        if(isColWin(playerMove) || isRowWin(playerMove) || isDiagonalWin(playerMove))
         {
-            System.out.println("You win");
+            return true;
+        }
+        return false;
+    }
+    private static boolean isDiagonalWin(String playerMove)
+    {
+        if(board[1][1].equals(playerMove)  && board[2][2].equals(playerMove) && board[3][3].equals(playerMove)|| board[1][3] == playerMove && board[2][2] == playerMove && board[3][1] == playerMove )
+        {
+            return true;
 
         }
         return false;
     }
-
+    private static boolean isRowWin(String playerMove)
+    {
+        for(int row =0; row < ROW; row++)
+        {
+            if(board[row][0].equals(playerMove) && board[row][1].equals(playerMove) && board[row][2].equals(playerMove))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    private static boolean isColWin(String playerMove)
+    {
+for(int col = 0; col < COL; col++)
+    {
+        if(board[col][0].equals(playerMove) && board[col][1].equals(playerMove) && board[col][2].equals(playerMove))
+        {
+            return true;
+        }
+    }
+        return false;
+}
 
 }
