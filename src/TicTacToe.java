@@ -32,7 +32,13 @@ public class TicTacToe {
            System.out.println("You entered a invalid move please try again");
            moveRowCoordinate = SafeInput.getRangedInt(in,"Player 1, please enter the number of the row you would like to play on: ",1,3);
            moveColCoordinate = SafeInput.getRangedInt(in,"Player 1, please enter the number of the column you would like to play on: ",1,3);
+           validMove = isValidMove(moveRowCoordinate,moveColCoordinate);
+           if (validMove == true)
+           {
 
+               board[moveRowCoordinate][moveColCoordinate] = playerMove;
+               display();
+           }
        }while (validMove == false);
    }
    playerMove = "O";
@@ -53,7 +59,15 @@ public class TicTacToe {
                 System.out.println("You entered a invalid move please try again");
                 moveRowCoordinate = SafeInput.getRangedInt(in,"Player 2, please enter the number of the row you would like to play on: ",1,3);
                 moveColCoordinate = SafeInput.getRangedInt(in,"Player 2, please enter the number of the column you would like to play on: ",1,3);
+                moveRowCoordinate = moveRowCoordinate - 1;
+                moveColCoordinate = moveColCoordinate - 1;
+                validMove = isValidMove(moveRowCoordinate,moveColCoordinate);
+                if (validMove == true)
+                {
 
+                    board[moveRowCoordinate][moveColCoordinate] = playerMove;
+                    display();
+                }
             }while (validMove == false);
         }
      }
@@ -82,7 +96,7 @@ public class TicTacToe {
     }
     private static boolean isValidMove(int row,int col) {
         boolean retVal = false;
-        if (board[row][col].equalsIgnoreCase(" "));
+        if (board[row][col].equalsIgnoreCase(" "))
         {
             retVal = true;
         }
