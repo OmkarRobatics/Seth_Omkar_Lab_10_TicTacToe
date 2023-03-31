@@ -197,7 +197,7 @@ public class SafeInput {
     /**
      * @param message a message to print
      */
-    public static void PrettyHeader(String message) {
+    public static void prettyHeader(String message) {
 
             for (int row = 0; row <= 60; row++) // prints 60 *
             {

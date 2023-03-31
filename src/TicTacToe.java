@@ -12,39 +12,43 @@ public class TicTacToe {
         int moveColCoordinate = 0;
         boolean validMove = false;
         int moveCnt = 0;
-        System.out.println("Tic Tac Toe Game");
+        boolean win = false;
+        SafeInput.prettyHeader("Tic Tac Toe Game");
+        System.out.println();
+        System.out.println("     Board");
     clearBoard();
     display();
     Scanner in = new Scanner(System.in);
-    playerMove = "X";
-    moveRowCoordinate = SafeInput.getRangedInt(in,"Player 1, please enter the number of the row you would like to play on: ",1,3);
-    moveColCoordinate = SafeInput.getRangedInt(in,"Player 1, please enter the number of the column you would like to play on: ",1,3);
+
+    do {
+        playerMove = "X";
+        moveRowCoordinate = SafeInput.getRangedInt(in, "Player 1, please enter the number of the row you would like to play on: ", 1, 3);
+        moveColCoordinate = SafeInput.getRangedInt(in, "Player 1, please enter the number of the column you would like to play on: ", 1, 3);
 
         moveRowCoordinate = moveRowCoordinate - 1;
         moveColCoordinate = moveColCoordinate - 1;
-        validMove = isValidMove(moveRowCoordinate,moveColCoordinate);
-   if (validMove == true) {
+        validMove = isValidMove(moveRowCoordinate, moveColCoordinate);
+        if (validMove == true) {
 
-       board[moveRowCoordinate][moveColCoordinate] = playerMove;
-       display();
-   }
-   else
-   {
-       do {
-           System.out.println("You entered a invalid move please try again");
-           moveRowCoordinate = SafeInput.getRangedInt(in,"Player 1, please enter the number of the row you would like to play on: ",1,3);
-           moveColCoordinate = SafeInput.getRangedInt(in,"Player 1, please enter the number of the column you would like to play on: ",1,3);
-           validMove = isValidMove(moveRowCoordinate,moveColCoordinate);
-           if (validMove == true)
-           {
+            board[moveRowCoordinate][moveColCoordinate] = playerMove;
+            display();
+        } else {
+            do {
+                System.out.println("You entered a invalid move please try again");
+                moveRowCoordinate = SafeInput.getRangedInt(in, "Player 1, please enter the number of the row you would like to play on: ", 1, 3);
+                moveColCoordinate = SafeInput.getRangedInt(in, "Player 1, please enter the number of the column you would like to play on: ", 1, 3);
+                validMove = isValidMove(moveRowCoordinate, moveColCoordinate);
+                if (validMove == true) {
 
-               board[moveRowCoordinate][moveColCoordinate] = playerMove;
-               display();
-           }
-       }while (validMove == false);
+                    board[moveRowCoordinate][moveColCoordinate] = playerMove;
+                    display();
+                }
+            } while (validMove == false);
 
-   }
+
+        }
         moveCnt++;
+
 
    // second player
    playerMove = "O";
@@ -78,7 +82,14 @@ public class TicTacToe {
 
         }
         moveCnt++;
+        win = isWin(playerMove);
+        if(win)
+        {
+            System.out.println("You win!");
+        }
+    }while (!win);
      }
+
 
     private static void clearBoard()
     {
@@ -120,7 +131,7 @@ public class TicTacToe {
     }
     private static boolean isDiagonalWin(String playerMove)
     {
-        if(board[1][1].equals(playerMove)  && board[2][2].equals(playerMove) && board[3][3].equals(playerMove)|| board[1][3] == playerMove && board[2][2] == playerMove && board[3][1] == playerMove )
+        if(board[0][0].equals(playerMove)  && board[1][1].equals(playerMove) && board[2][2].equals(playerMove)|| board[0][2] == playerMove && board[1][1] == playerMove && board[2][0] == playerMove )
         {
             return true;
 

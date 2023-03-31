@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f5a6abc7-72df-49ce-9f9a-b42622f94b3d" name="Changes" comment="Project init">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SafeInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SafeInput.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TicTacToe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TicTacToe.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -81,7 +82,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680122958173</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Project init">
+      <created>1680125197786</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1680125197786</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
