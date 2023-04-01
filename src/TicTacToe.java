@@ -119,7 +119,7 @@ public class TicTacToe {
                         System.out.println("The game is a tie."); // gives tie message
                     }
                 }
-            } while (!win || !tie); // continues to next move if no win or tie. If there is a win or tie it will ask users if they want to play again
+            } while (!win && !tie); // continues to next move if no win or tie. If there is a win or tie it will ask users if they want to play again
             playAgain = SafeInput.getYNConfirm(in, "Would you like to play again? [respond with Y or N]: "); // prompts users to play again
         }while (playAgain); // repeats everything if they answer with yes.
         }
@@ -191,32 +191,47 @@ public class TicTacToe {
         boolean diagonalOPresent = false;
 
         // checking in rows
-
         for (int row = 0; row < ROW; row++) {
             if (board[row][0].equals("X") || board[row][1].equals("X") || board[row][2].equals("X")) {
                 rowXPresent = true;
+            } else{
+                rowXPresent = false;
+                break;
             }
         }
+        //checking cols
         for (int col = 0; col < COL; col++) {
-            if (board[0][col].equals("X") && board[1][col].equals("X") && board[2][col].equals("X")) {
+            if (board[0][col].equals("X") || board[1][col].equals("X") || board[2][col].equals("X")) {
                 colXPresent = true;
+            } else{
+                colXPresent = false;
+                break;
             }
         }
-        if (board[0][0].equals("X") && board[1][1].equals("X") && board[2][2].equals("X") || board[0][2].equalsIgnoreCase("X") && board[1][1].equals("X") && board[2][0].equals("X"))
+
+        if ((board[0][0].equals("X") || board[1][1].equals("X") || board[2][2].equals("X")) && (board[0][2].equalsIgnoreCase("X") || board[1][1].equals("X") || board[2][0].equals("X")))
         {
             diagonalXPresent = true;
         }
+
         for (int row = 0; row < ROW; row++) {
                 if (board[row][0].equals("O") || board[row][1].equals("O") || board[row][2].equals("O")) {
                     rowOPresent = true;
+                } else{
+                    rowOPresent = false;
+                    break;
                 }
             }
             for (int col = 0; col < COL; col++) {
-                if (board[0][col].equals("O") && board[1][col].equals("O") && board[2][col].equals("O")) {
+                if (board[0][col].equals("O") || board[1][col].equals("O") || board[2][col].equals("O")) {
                     colOPresent = true;
+                } else{
+                    colOPresent = false;
+                    break;
                 }
             }
-            if (board[0][0].equals("O") && board[1][1].equals("O") && board[2][2].equals("O") || board[0][2].equalsIgnoreCase("O") && board[1][1].equals("O") && board[2][0].equals("O"))
+
+            if ((board[0][0].equals("O") || board[1][1].equals("O") || board[2][2].equals("O")) && (board[0][2].equalsIgnoreCase("O") || board[1][1].equals("O") || board[2][0].equals("O")))
             {
                 diagonalOPresent = true;
             }
@@ -224,6 +239,13 @@ public class TicTacToe {
         {
             return true;
         }
+        System.out.println("X Row: " + rowXPresent);
+        System.out.println("X col: " + colXPresent);
+        System.out.println("X diagonal: " + diagonalXPresent);
+        System.out.println("O row: " + rowOPresent);
+        System.out.println("O col: " + colOPresent);
+        System.out.println("O diagonal: " + diagonalOPresent);
+
         return false;
     }
 }
