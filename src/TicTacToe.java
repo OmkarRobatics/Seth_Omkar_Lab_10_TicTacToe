@@ -190,62 +190,57 @@ public class TicTacToe {
         boolean colOPresent = false;
         boolean diagonalOPresent = false;
 
-        // checking in rows
+        // checking in rows X
         for (int row = 0; row < ROW; row++) {
             if (board[row][0].equals("X") || board[row][1].equals("X") || board[row][2].equals("X")) {
-                rowXPresent = true;
+                rowXPresent = true; // sets to true if present
             } else{
-                rowXPresent = false;
-                break;
+                rowXPresent = false; // sets to false if not present
+                break; // breaks out of for loop
             }
         }
-        //checking cols
+        //checking cols X
         for (int col = 0; col < COL; col++) {
             if (board[0][col].equals("X") || board[1][col].equals("X") || board[2][col].equals("X")) {
-                colXPresent = true;
+                colXPresent = true; // sets to true if present
             } else{
-                colXPresent = false;
-                break;
+                colXPresent = false; // sets to false if not present
+                break; // breaks out of for loop
             }
         }
-
+// checking for diagonals X
         if ((board[0][0].equals("X") || board[1][1].equals("X") || board[2][2].equals("X")) && (board[0][2].equalsIgnoreCase("X") || board[1][1].equals("X") || board[2][0].equals("X")))
         {
-            diagonalXPresent = true;
+            diagonalXPresent = true; // sets to true if present
         }
-
+// checks for rows O
         for (int row = 0; row < ROW; row++) {
                 if (board[row][0].equals("O") || board[row][1].equals("O") || board[row][2].equals("O")) {
-                    rowOPresent = true;
+                    rowOPresent = true; // sets to true if present
                 } else{
-                    rowOPresent = false;
-                    break;
+                    rowOPresent = false; // sets to false if not present
+                    break; // breaks out of for loop
                 }
             }
+        // checking for cols O
             for (int col = 0; col < COL; col++) {
                 if (board[0][col].equals("O") || board[1][col].equals("O") || board[2][col].equals("O")) {
-                    colOPresent = true;
+                    colOPresent = true; // sets to true if present
                 } else{
-                    colOPresent = false;
-                    break;
+                    colOPresent = false; // sets to false if not present
+                    break; // breaks out of for loop
                 }
             }
-
+// checks for diagonal O
             if ((board[0][0].equals("O") || board[1][1].equals("O") || board[2][2].equals("O")) && (board[0][2].equalsIgnoreCase("O") || board[1][1].equals("O") || board[2][0].equals("O")))
             {
-                diagonalOPresent = true;
+                diagonalOPresent = true; // sets to true if present
             }
-        if (rowXPresent && rowOPresent && colXPresent && colOPresent && diagonalXPresent && diagonalOPresent)
+        if (rowXPresent && rowOPresent && colXPresent && colOPresent && diagonalXPresent && diagonalOPresent) // tests if all win vectors are blocked
         {
-            return true;
+            return true; // reports a tie if all win vectors are blocked
         }
-        System.out.println("X Row: " + rowXPresent);
-        System.out.println("X col: " + colXPresent);
-        System.out.println("X diagonal: " + diagonalXPresent);
-        System.out.println("O row: " + rowOPresent);
-        System.out.println("O col: " + colOPresent);
-        System.out.println("O diagonal: " + diagonalOPresent);
 
-        return false;
+        return false; // else reports false
     }
 }
