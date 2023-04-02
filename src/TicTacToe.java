@@ -1,17 +1,61 @@
 import java.util.Scanner;
 /* pseudocode
- - display title
+ - output title using pretty header in safe input.
  - clear board (important if user wants to play again)
+            - sets each square to space
+            - board [row][col = " "
+            - use two for loops to touch each square
  - display board
+            - use two for loops to touch each square.
+            - print one line of | first after row for loop.
+            - print array board[row][col] with | to create rest of the board
  - get coordinates from player 1.
+ playerMove = X
+             - output: enter coordinate for row
+             - output: enter coordinate for column
+             - input coordinates using safe input
  - check if it is valid
+           in method:
+            if board [row][col] = " " then
+             valid move = true
+             else
+             valid move = false
+
+             in main:
+             boolean validMove = false
+             validMove = isValidMove(rowCoordinate, colCoordinate)
+             if (validMove) then
+             board[rowCoordinate][colCoordinate] = playerMove
+                    display()
+              else
+              do
+              output: enter row move
+              output: enter col move
+              input moves
+              check if valid
+              while(!validMove)
  - get coordinates from player 2.
+ playerMove = O
+ repeat processes from above
  - check if valid
+ repeat processes from above
  - keep getting moves from players
- - check for win or tie
+ do {
+ get move from player 1 (processes above)
+ get move from player 2 (processes above)
+ }while(!win && !tie)
+ - check for win or tie - check once 5 moves have been played
+  boolean win = isWin("O" or with "X")
+boolean tie = isTie()
  - announce result
+if (isWin) then
+output: Player (1 or 2), you win
+else if(isTie) then
+output: it is a tie
  - ask user if they want to player again.
+     - use safe input
  - repeat if they say yes. end program if they say no.
+          - use do while loop for this
 */
 public class TicTacToe {
     private static final int ROW = 3; // row length of TTT board
