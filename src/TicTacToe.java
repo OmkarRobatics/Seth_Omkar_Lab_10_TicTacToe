@@ -1,5 +1,18 @@
 import java.util.Scanner;
-
+/* pseudocode
+ - display title
+ - clear board (important if user wants to play again)
+ - display board
+ - get coordinates from player 1.
+ - check if it is valid
+ - get coordinates from player 2.
+ - check if valid
+ - keep getting moves from players
+ - check for win or tie
+ - announce result
+ - ask user if they want to player again.
+ - repeat if they say yes. end program if they say no.
+*/
 public class TicTacToe {
     private static final int ROW = 3; // row length of TTT board
     private static final int COL = 3; // column length of TTT board
